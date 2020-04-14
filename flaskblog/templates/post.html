@@ -6,37 +6,57 @@
       <div class="article-metadata">
         <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
         <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-        {% if post.author == current_user %}
-          <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
-            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-          </div>
-        {% endif %}
+        <small class="text-muted">{{ post.position }}</small>
       </div>
       <h2 class="article-title">{{ post.title }}</h2>
       <p class="article-content">{{ post.content }}</p>
+      <img src="{{ url_for('static', filename='post_pics/' + post.image_file) }}" class="rounded" />
+      <div class="post-button-section">
+        {% if post.post_type==0 %}
+            <button class="btn btn-outline-info">Travel</button>
+        {% else %}
+            <button class="btn btn-outline-info">Explore</button>
+        {% endif %}
+        <button onclick="like({{ post.id }}, {{ post.like_count }})"
+        class="btn btn-outline-primary">
+            Like
+            <span id="like-button">
+                {{ post.like_count }}
+            </span>
+        </button>
+
+        <button onclick="star({{ post.id }}, {{ post.star_count }})"
+        class="btn btn-outline-primary">
+            Star
+            <span id="star-button">
+                {{ post.star_count }}
+            </span>
+        </button>
+
+        {% if post.author == current_user %}
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
+            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+        {% endif %}
+    </div>
     </div>
   </article>
-
-    <div class="content-section">
+  <div class="comment-section">
         <form method="POST" action="">
             {{ comment_form.hidden_tag() }}
-            <fieldset class="form-group">
-                <div class="form-group">
-                    {{ comment_form.content.label(class="form-control-label") }}
+            <div class="form-group">
+                {{ comment_form.content.label(class="form-control-label") }}
 
-                    {% if comment_form.content.errors %}
-                        {{ comment_form.content(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in comment_form.content.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ comment_form.content(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-            </fieldset>
+                {% if comment_form.content.errors %}
+                    {{ comment_form.content(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in comment_form.content.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ comment_form.content(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
             <div class="form-group">
                 {{ comment_form.submit(class="btn btn-outline-info") }}
             </div>
@@ -75,3 +95,56 @@
     </div>
   </div>
 {% endblock content %}
+
+{% block js %}
+<script type="text/javascript">
+    function like(post_id, like_count) {
+        const data = {
+            data: JSON.stringify({
+                "post_id": post_id
+            })
+        };
+        $.ajax({
+           url: "/like",
+           type: "POST",
+           data: data,
+           dataType: "json",
+           success: function(d) {
+                if (d.state===200) {
+                    const count = parseInt(like_count) + 1;
+                    $("#like-button").html(count);
+                }
+                else{
+                    alert(d.message)
+                }
+            },
+            error: function() {
+                console.log("error");
+            }
+    })}
+    function star(post_id, star_count) {
+        const data = {
+            data: JSON.stringify({
+                "post_id": post_id
+            })
+        };
+        $.ajax({
+           url: "/star",
+           type: "POST",
+           data: data,
+           dataType: "json",
+           success: function(d) {
+                if (d.state===200) {
+                    const count = parseInt(star_count) + 1;
+                    $("#star-button").html(count);
+                }
+                else{
+                    alert(d.message)
+                }
+            },
+            error: function() {
+                console.log("error");
+            }
+    })}
+</script>
+{% endblock js %}

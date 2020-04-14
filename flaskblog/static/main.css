@@ -29,7 +29,17 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
-  margin-bottom: 20px;
+}
+
+.comment-section {
+  background: #ffffff;
+  margin-top: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+}
+
+.post-button-section {
+  margin: 20px 0
 }
 
 .article-title {
@@ -77,4 +87,11 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+footer {
+    color: #888;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px;
 }
