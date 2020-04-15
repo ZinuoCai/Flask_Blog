@@ -30,6 +30,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
+@users.route("/", methods=['GET', 'POST'])
 @users.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -81,6 +82,15 @@ def user_posts(username):
         .order_by(Post.date_posted.desc())\
         .paginate(page=page, per_page=5)
     return render_template('user_posts.html', posts=posts, user=user)
+
+
+@users.route("/my")
+def my():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.filter_by(author=current_user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate(page=page, per_page=5)
+    return render_template('user_posts.html', posts=posts, user=current_user)
 
 
 @users.route("/reset_password", methods=['GET', 'POST'])

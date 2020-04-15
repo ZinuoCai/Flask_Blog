@@ -37,7 +37,7 @@ def post(post_id):
         db.session.add(comment)
         db.session.commit()
         flash('You have comment successfully!', 'success')
-    comments = Comment.query.order_by(Comment.date_commented.desc()).all()
+    comments = Comment.query.filter_by(post_id=post_id).order_by(Comment.date_commented.desc()).all()
     return render_template('post.html', title=post.title, post=post,
                            comments=comments, comment_form=form)
 
@@ -96,6 +96,9 @@ def update_post(post_id):
     if form.validate_on_submit():
         post.title = form.title.data
         post.content = form.content.data
+        if form.picture.data:
+            post.image_file = save_picture(form.picture.data)
+        post.post_type = 1 if form.travel_or_explore.data else 0
         db.session.commit()
         flash('Your post has been updated!', 'success')
         return redirect(url_for('posts.post', post_id=post.id))

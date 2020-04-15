@@ -1,0 +1,73 @@
+ * Serving Flask app "flaskblog" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+D:\software\Anaconda\envs\flask_env\lib\site-packages\flask_sqlalchemy\__init__.py:835: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Restarting with stat
+D:\software\Anaconda\envs\flask_env\lib\site-packages\flask_sqlalchemy\__init__.py:835: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Debugger is active!
+ * Debugger PIN: 130-597-893
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [14/Apr/2020 21:07:56] "[37mGET /user/demo1 HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:07:59] "[32mGET /logout HTTP/1.1[0m" 302 -
+127.0.0.1 - - [14/Apr/2020 21:07:59] "[37mGET /home HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:01] "[37mGET /login HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:02] "[32mPOST /login HTTP/1.1[0m" 302 -
+127.0.0.1 - - [14/Apr/2020 21:08:02] "[37mGET /home HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:03] "[35m[1mGET /my HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\software\Anaconda\envs\flask_env\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\study\github\Flask_Blog\flaskblog\users\routes.py", line 93, in my
+    return render_template('user_posts.html', posts=posts, user=user)
+NameError: name 'user' is not defined
+127.0.0.1 - - [14/Apr/2020 21:08:03] "[37mGET /my?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:04] "[37mGET /my?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:04] "[37mGET /my?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:04] "[37mGET /my?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:04] "[37mGET /my?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:04] "[37mGET /my?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+ * Detected change in 'D:\\study\\github\\Flask_Blog\\flaskblog\\users\\routes.py', reloading
+ * Restarting with stat
+D:\software\Anaconda\envs\flask_env\lib\site-packages\flask_sqlalchemy\__init__.py:835: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Debugger is active!
+ * Debugger PIN: 130-597-893
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [14/Apr/2020 21:08:34] "[37mGET /my HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:38] "[37mGET /star HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:39] "[37mGET /account HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:40] "[37mGET /post/new HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:42] "[37mGET /account HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:45] "[37mGET /post/new HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:47] "[37mGET /account HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:48] "[37mGET /star HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:49] "[37mGET /my HTTP/1.1[0m" 200 -
+127.0.0.1 - - [14/Apr/2020 21:08:50] "[32mGET /logout HTTP/1.1[0m" 302 -
+127.0.0.1 - - [14/Apr/2020 21:08:50] "[37mGET /home HTTP/1.1[0m" 200 -
+ * Detected change in 'D:\\study\\github\\Flask_Blog\\run.py', reloading
+ * Restarting with stat
+D:\software\Anaconda\envs\flask_env\lib\site-packages\flask_sqlalchemy\__init__.py:835: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)

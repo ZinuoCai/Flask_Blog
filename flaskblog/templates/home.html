@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
+    <div class="post-button-section">
+    <a class="btn btn-outline-info" href="{{ url_for('main.travel') }}">Travel</a>
+    <a class="btn btn-outline-info" href="{{ url_for('main.explore') }}">Explore</a>
+    </div>
+
     {% for post in posts.items %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
@@ -14,9 +19,9 @@
 {#            <p class="article-content">{{ post.content }}</p>#}
               <div class="post-button-section">
                 {% if post.post_type %}
-                    <button class="btn btn-outline-info">Travel</button>
-                {% else %}
                     <button class="btn btn-outline-info">Explore</button>
+                {% else %}
+                    <button class="btn btn-outline-info">Travel</button>
                 {% endif %}
                 <button class="btn btn-outline-primary">
                     Like

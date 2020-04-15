@@ -9,7 +9,7 @@ class PostForm(FlaskForm):
     travel_or_explore = BooleanField('Travel/Explore(tick if explore)')
     content = TextAreaField('Content', validators=[DataRequired()])
     position = StringField('Position', validators=[DataRequired()])
-    picture = FileField('Add Image', validators=[DataRequired(), FileAllowed(['jpg', 'png'])])
+    picture = FileField('Add Image', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Post')
 
 

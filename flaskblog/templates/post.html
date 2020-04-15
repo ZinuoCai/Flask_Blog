@@ -12,10 +12,10 @@
       <p class="article-content">{{ post.content }}</p>
       <img src="{{ url_for('static', filename='post_pics/' + post.image_file) }}" class="rounded" />
       <div class="post-button-section">
-        {% if post.post_type==0 %}
-            <button class="btn btn-outline-info">Travel</button>
-        {% else %}
+        {% if post.post_type %}
             <button class="btn btn-outline-info">Explore</button>
+        {% else %}
+            <button class="btn btn-outline-info">Travel</button>
         {% endif %}
         <button onclick="like({{ post.id }}, {{ post.like_count }})"
         class="btn btn-outline-primary">
